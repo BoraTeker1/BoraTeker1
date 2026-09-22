@@ -1,43 +1,46 @@
 ## Bora Teker
 
-Computer Science graduate, University at Buffalo. Based in Istanbul, Türkiye.
+Computer Science graduate, University at Buffalo. Based in Istanbul.
 
-I build backend services and applied AI systems — mostly Python and Java. The work I find
-most interesting is the part around the model rather than the model itself: making a system
-explain its own output, refuse to answer when its inputs are not trustworthy, and keep a
-record of how it got there.
+I write backend services, mostly in Python and Java. Most of what I've built lately has an
+LLM somewhere in it, and the hard parts have usually been everywhere else: showing how a
+result was reached, deciding what the system should do when its input data isn't
+trustworthy, and keeping records that still make sense to someone reading them months later.
 
 ### Selected projects
 
-**[lumos-spray-copilot](https://github.com/BoraTeker1/lumos-spray-copilot)** —
-Decision-support backend for pesticide spray decisions, with an agronomist in the loop.
-FastAPI + SQLAlchemy with 25 Alembic migrations, a rule-based decision engine, and an
-append-only provenance model: every compliance-critical value carries its source, imported
-data can never auto-approve a recommendation, and the audit trail is only ever appended to.
-Next.js review UI. CI runs the backend test suite and asserts the LLM layer is mocked so
-tests can never reach a live API.
-`Python · FastAPI · SQLAlchemy · Alembic · pytest · Next.js · GitHub Actions`
+**[lumos-spray-copilot](https://github.com/BoraTeker1/lumos-spray-copilot)**
+Decision support for pesticide spray timing, with an agronomist reviewing every
+recommendation before it reaches a grower. FastAPI and SQLAlchemy backend with 25 Alembic
+migrations, a rule-based decision engine, and a provenance layer that records where each
+compliance-critical value came from. Imported values always escalate to human review, since
+nothing unverified is allowed to produce an automatic approval. The audit trail is
+append-only. Next.js review UI. CI runs the backend test suite and asserts the LLM layer is
+mocked, so tests can never reach a live API.
+`Python, FastAPI, SQLAlchemy, Alembic, pytest, Next.js, GitHub Actions`
 
-**[queuepilot-incident-api](https://github.com/BoraTeker1/queuepilot-incident-api)** —
-Incident-management API where the lifecycle is enforced rather than assumed. Illegal status
-transitions are rejected by an explicit state machine, repeated alerts collapse onto a
-unique dedupe key instead of opening duplicate incidents, each change appends an immutable
-event, and a single exception handler maps every failure to a structured error body.
-Publishes to Kafka on incident creation.
-`Java 21 · Spring Boot · JPA · Kafka · PostgreSQL`
+**[queuepilot-incident-api](https://github.com/BoraTeker1/queuepilot-incident-api)**
+An incident tracker with a real lifecycle behind it. Status changes go through an explicit
+state machine, so an illegal transition returns a 400 instead of quietly corrupting the
+record. Repeated alerts carrying the same dedupe key collapse into one incident, backed by a
+unique constraint in the database. Every change appends a row to an audit table, and a
+single exception handler maps each failure type to a structured error body. Opening an
+incident publishes to Kafka.
+`Java 21, Spring Boot, JPA, Kafka, PostgreSQL`
 
-**[network-ai](https://github.com/BoraTeker1/network-ai)** —
-Ingests new-grad job postings by parsing HTML tables out of a public README, deduplicates
-them with a content hash enforced at the database level, and ranks them against a parsed
-resume using a deterministic 0–100 scorer. No LLM calls in the scoring path — the API
-returns the reasoning behind each score, not just the number.
-`Python · FastAPI · SQLAlchemy · Pydantic`
+**[network-ai](https://github.com/BoraTeker1/network-ai)**
+Pulls new-grad job postings by parsing HTML tables out of a public README, which is messier
+than it sounds: continuation rows inherit the company above them, and half the markup is
+decorative. Postings are deduplicated by a content hash enforced at the database level.
+Scoring against a parsed resume is a deterministic 0 to 100 rule set with no model call in
+the path, and the API hands back the reasoning behind each score along with it.
+`Python, FastAPI, SQLAlchemy, Pydantic`
 
-**[job-description-analyzer](https://github.com/BoraTeker1/job-description-analyzer)** —
-Compares a job description against a resume and streams back a structured report: fit,
-gaps, keywords, and suggested bullet rewrites. The system prompt constrains the model to
-the candidate's actual experience rather than letting it invent any.
-`Python · OpenAI API · Gradio`
+**[job-description-analyzer](https://github.com/BoraTeker1/job-description-analyzer)**
+Takes a job description and a resume and streams back a structured report: how well they
+fit, what's missing, which keywords to add, and how to rewrite specific bullets. The system
+prompt holds the model to experience that actually appears in the resume.
+`Python, OpenAI API, Gradio`
 
 ### Technical
 
@@ -50,4 +53,5 @@ the candidate's actual experience rather than letting it invent any.
 
 ### Contact
 
-[tekerbora@gmail.com](mailto:tekerbora@gmail.com) · [LinkedIn](https://www.linkedin.com/in/borateker/)
+Email: [tekerbora@gmail.com](mailto:tekerbora@gmail.com)
+LinkedIn: [linkedin.com/in/borateker](https://www.linkedin.com/in/borateker/)
