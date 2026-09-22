@@ -11,7 +11,7 @@ record of how it got there.
 
 **[lumos-spray-copilot](https://github.com/BoraTeker1/lumos-spray-copilot)** —
 Decision-support backend for pesticide spray decisions, with an agronomist in the loop.
-FastAPI + SQLAlchemy with 24 Alembic migrations, a rule-based decision engine, and an
+FastAPI + SQLAlchemy with 25 Alembic migrations, a rule-based decision engine, and an
 append-only provenance model: every compliance-critical value carries its source, imported
 data can never auto-approve a recommendation, and the audit trail is only ever appended to.
 Next.js review UI. CI runs the backend test suite and asserts the LLM layer is mocked so
