@@ -1,6 +1,6 @@
 ## Bora
 
-CS graduate from the University at Buffalo, currently based in Istanbul.
+CS graduate from the University at Buffalo, currently based in New York.
 
 I mainly work with Python and Java, building backend applications and experimenting with AI agents. Recently, I've been learning how to build agents from scratch, focusing on tool calling, planning, routing, and testing their outputs.
 
